@@ -1,8 +1,12 @@
+import java.util.HashMap;
 
-public class Trial {
-	String whatever;
-	public Trial(){
-		whatever="ever";
+public class ATM{
+	private HashMap<Integer, Double> completeATM= new HashMap<Integer,Double>();
+	
+	public ATM(){
+		
 	}
+	
+	
 
 }
