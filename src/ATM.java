@@ -29,14 +29,14 @@ public class ATM{
 	
 	public Boolean depositMoney(Integer AcctNum, Double Deposit) {
 		if(completeATM.containsKey(AcctNum)&&Deposit>0){
-			completeATM.replace(AcctNum, Deposit);
+			completeATM.replace(AcctNum, (Double)(completeATM.get(AcctNum))+Deposit);
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean withdrawMoney(Integer AcctNum, Double withdrawal){
-		if(completeATM.containsKey(AcctNum)&& (Double)(completeATM.get(AcctNum))>withdrawal){
+		if(withdrawal>0 && completeATM.containsKey(AcctNum) && (Double)(completeATM.get(AcctNum))>withdrawal){
 			completeATM.replace(AcctNum, (Double)(completeATM.get(AcctNum))-withdrawal);
 			return true;
 		}
