@@ -8,7 +8,7 @@ public class personalTester {
 		chaseATM.closeAccount(1234);
 		chaseATM.closeAccount(5678);
 		
-		System.out.println(chaseATM.checkBalance(12345));
+		System.out.println(chaseATM.checkBalance(1234));
 		System.out.println(chaseATM.checkBalance(5678));
 		
 				

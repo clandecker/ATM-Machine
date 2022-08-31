@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 public class ATM{
@@ -35,9 +37,18 @@ public class ATM{
 		return false;
 	}
 	
-	public boolean withdrawMoney(Integer AcctNum, Double withdrawal){
-		if(withdrawal>0 && completeATM.containsKey(AcctNum) && (Double)(completeATM.get(AcctNum))>withdrawal){
-			completeATM.replace(AcctNum, (Double)(completeATM.get(AcctNum))-withdrawal);
+	public boolean withdrawMoney(Integer AcctNum, Double Withdrawal){
+		if(Withdrawal>0 && completeATM.containsKey(AcctNum) && (Double)(completeATM.get(AcctNum))>Withdrawal){
+
+			//gets new balance (rounded weirdly)
+			Double newBalance=(Double)completeATM.get(AcctNum)-Withdrawal;
+			
+			//uses BigDecimal to round correctly
+			BigDecimal bigNewBalance=BigDecimal.valueOf(newBalance); 
+			bigNewBalance=bigNewBalance.setScale(2, RoundingMode.HALF_UP);
+			newBalance=bigNewBalance.doubleValue();			
+			
+			completeATM.replace(AcctNum, newBalance);
 			return true;
 		}
 		return false;
